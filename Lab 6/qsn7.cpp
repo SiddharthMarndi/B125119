@@ -1,29 +1,34 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-    char sentence[100];
-    cout << "Enter a sentence: ";
-    cin.getline(sentence, 200);
-
-    char *ptr = sentence;
-    int upper=0, lower=0, space=0;
-
-    while (*ptr != '.') {
-        if (*ptr >= 'A' && *ptr <= 'Z') {
-            upper++;
-        } else if (*ptr >= 'a' && *ptr <= 'z') {
-            lower++;
-        } else if (*ptr == ' ') {
-            space++;
-        }
-        ptr++;
+class Date {
+    int day;
+    int month;
+    int year;
+public:
+    void input() {
+        cout << "Enter day: ";
+        cin >> day;
+        cout << "Enter month: ";
+        cin >> month;
+        cout << "Enter year: ";
+        cin >> year;
     }
+    bool operator==(const Date& d) {
+        return (day == d.day && month == d.month && year == d.year);
+    }
+};
 
-    cout << "Uppercase letters: " << upper<< endl;
-    cout << "Lowercase letters: " << lower<< endl;
-    cout << "Spaces: " << space<< endl;
-
+int main() {
+    Date d1, d2;
+    cout << "Enter Date 1:\n";
+    d1.input();
+    cout << "Enter Date 2:\n";
+    d2.input();
+    if (d1 == d2) {
+        cout << "Both dates are equal." << endl;
+    } else {
+        cout << "Dates are not equal." << endl;
+    }
     return 0;
 }
-

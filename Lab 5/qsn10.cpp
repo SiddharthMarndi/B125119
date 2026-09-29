@@ -62,7 +62,6 @@ int main() {
     cout << "\nEnter two integer values for pointer processing: ";
     cin >> ptrVal1 >> ptrVal2;
     cout << "Sum of values via pointers: " << dp.process(&ptrVal1, &ptrVal2) << endl;
-
     delete[] arr;
 
     return 0;

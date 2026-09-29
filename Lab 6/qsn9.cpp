@@ -1,34 +1,33 @@
 #include <iostream>
 using namespace std;
 
+class Temperature {
+    float temp;
+public:
+    void input() {
+        cout << "Enter temperature in Celsius: ";
+        cin >> temp;
+    }
+    bool operator<(const Temperature& t) {
+        return temp < t.temp;
+    }
+    bool operator>(const Temperature& t) {
+        return temp > t.temp;
+    }
+};
+
 int main() {
-    int n;
-    cout << "Enter total number of parking slots: ";
-    cin >> n;
-
-    int *slots = new int[n];
-    cout << "Enter status for each slot (0 for available, 1 for occupied):" << endl;
-    for (int i = 0; i < n; i++) {
-        cin >> *(slots + i);
+    Temperature t1, t2;
+    cout << "Enter Temperature 1:\n";
+    t1.input();
+    cout << "Enter Temperature 2:\n";
+    t2.input();
+    if (t1 < t2) {
+        cout << "First temperature is lower than the second." << endl;
+    } else if (t1 > t2) {
+        cout << "First temperature is higher than the second." << endl;
+    } else {
+        cout << "Both temperatures are equal." << endl;
     }
-
-    int *ptr = slots;
-    int available = 0;
-    int occupied = 0;
-
-    for (int i = 0; i < n; i++) {
-        if (*ptr == 0) {
-            available++;
-        } else if (*ptr == 1) {
-            occupied++;
-        }
-        ptr++;
-    }
-
-    cout << "Available slots: " << available << endl;
-    cout << "Occupied slots: " << occupied << endl;
-
-    delete[] slots;
     return 0;
 }
-
